@@ -35,7 +35,7 @@ function Searchbar() {
                 method: 'get',
                 //    https://maps.googleapis.com/maps/api/place/autocomplete/
                 url: `json?input=${val}&types=geocode&key=AIzaSyCVvQNBYvpfiksBOs4rpr_3g0qHSNBHDac`,
-                headers: { 'Access-Control-Allow-Origin': '*','Content-Type': 'application/json' }
+                headers: {  }
             }
 
             axios(config)
