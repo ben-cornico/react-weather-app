@@ -13,7 +13,7 @@
     "react-scripts": "5.0.1",
     "web-vitals": "^2.1.0"
   },
-  "proxy": "https://maps.googleapis.com/maps/api/place/autocomplete/",
+  "proxy": "https://maps.googleapis.com/maps/api/place/",
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
