@@ -1,6 +1,30 @@
-import React from 'react'
+import React, { useState } from 'react';
+import axios from 'axios'
 
-function Info() {
+function Info(props) {
+    const {lat, lng} = props.data;
+
+    const getWeather = (lat, lng) => {
+        if(lat !== undefined && lng !== undefined) {
+            const config = {
+                method: 'get',
+                //made a proxy base url in package.json to fix the CORS error if youre using third party api
+                url: `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lng}&appid=${process.env.REACT_APP_WEATHER_API_KEY}`,
+                headers: {  }
+            }
+    
+            axios(config)
+                .then(res => {
+                    // setDropDown(res.data.predictions)
+                    console.log(res.data)
+                })
+                .catch(err => {
+                    console.log(err.response)
+                })
+        }
+    }
+
+    getWeather(lat, lng)
   return (
     <div className='info'>
         <div className="info-temp">

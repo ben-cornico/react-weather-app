@@ -30,9 +30,6 @@ function Searchbar(props) {
     const handleSubmit = (e, id) => {
         e.preventDefault();
 
-        console.log(e)
-        console.log(id)
-        const val = e.target.value
         const config = {
             method: 'get',
             //made a proxy base url in package.json to fix the CORS error if youre using third party api

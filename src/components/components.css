@@ -9,7 +9,7 @@
 
 .dropdown {
     position: absolute;
-    transition: 0.3s all;
+    transition: 1s all ease;
     top: 3rem;
     width: 100%;
     background-color: #8f8f8f;
@@ -19,6 +19,7 @@
 }
 
 .dropdown.active {
+    transition: 1s all;
     max-height: 300px;
     opacity: 1;
     z-index: 1;
