@@ -1,0 +1,27 @@
+.searchbar {
+    display: flex;
+    width: 100%;
+}
+
+.searchbar > .search-autocomplete {
+    border: 1px solid #000000;
+    display: flex;
+    align-items: center;
+    justify-content: left;
+    width: 100%;
+}
+
+.searchbar > button {
+    font-size: 1.3rem;
+}
+
+.searchbar > .search-autocomplete > input {
+    font-size: 1.5rem;
+    margin-left: 0.5rem;
+    border: none;
+    outline: none;
+}
+
+.searchar > .search-autocomplete, .searchbar > button {
+    padding: 0.5rem;
+}
