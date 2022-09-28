@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.App {
+  margin: 1rem;
+}
+
 .large-text {
   font-size: 3rem;
 }

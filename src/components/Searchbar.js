@@ -1,69 +1,49 @@
-import React from 'react';
+import React, { useState, useRef } from 'react';
 import axios from 'axios'
 import './components.css'
 
 function Searchbar() {
+    const searchRef = useRef()
+    const [dropDown, setDropDown] = useState([])
+    const [searchActive, setSearchActive] = useState(false);
 
-    // var axios = require('axios');
-
-    // var config = {
-    // method: 'get',
-    // url: 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=laoag&types=geocode&key=AIzaSyCVvQNBYvpfiksBOs4rpr_3g0qHSNBHDac',
-    // headers: { }
-    // };
-
-    // axios(config)
-    // .then(function (response) {
-    // console.log(JSON.stringify(response.data));
-    // })
-    // .catch(function (error) {
-    // console.log(error);
-    // });
 
     const getPredictions = (e) => {
         const val = e.target.value
-        // axios.get(`https://maps.googleapis.com/maps/api/place/autocomplete/json?input=${val}&types=geocode&key=AIzaSyCVvQNBYvpfiksBOs4rpr_3g0qHSNBHDac`)
-        //     .then(res => {
-        //         console.log(JSON.stringify(res.data));
-        //     })
-        //     .catch(err => {
-        //         console.log(err);
-        //         console.log(err.response.data.error)
-        //     })
-
+        console.log(e)
             const config = {
                 method: 'get',
-                //    https://maps.googleapis.com/maps/api/place/autocomplete/
-                url: `json?input=${val}&types=geocode&key=AIzaSyCVvQNBYvpfiksBOs4rpr_3g0qHSNBHDac`,
+                //made a proxy base url in package.json to fix the CORS error if youre using third party api
+                url: `json?input=${val}&types=geocode&key=${process.env.REACT_APP_API_KEY}`,
                 headers: {  }
             }
 
             axios(config)
                 .then(res => {
-                    console.log(res.data)
+                    setDropDown(res.data.predictions)
                 })
                 .catch(err => {
                     console.log(err.response)
                 })
 
-            // var config = {
-            //     method: 'get',
-            //     url: 'https://maps.googleapis.com/maps/api/place/autocomplete/json?input=laoag&types=geocode&key=AIzaSyCVvQNBYvpfiksBOs4rpr_3g0qHSNBHDac',
-            //     headers: { }
-            //     };
-            
-            //     axios(config)
-            //     .then(function (response) {
-            //     console.log(JSON.stringify(response.data));
-            //     })
-            //     .catch(function (error) {
-            //     console.log(error);
-            //     });
+                
+        console.log(dropDown)
+        console.log(searchActive)
     }
+
   return (
     <div className='searchbar'>
         <div className="search-autocomplete">
-            <input type="text" name="" id="" placeholder='Search your city' onChange={getPredictions}/>
+            <input type="text" name="" id="" placeholder='Search your city' onChange={getPredictions} ref={searchRef} onFocus={() => setSearchActive(true)} onBlur={() => setSearchActive(false)}/>
+            <div className={(dropDown.length >= 0 && searchActive) ? 'dropdown active' : 'dropdown'}>
+                {
+                    dropDown.length >= 1 && (
+                        dropDown.map(menu => {
+                            return <div className="item">{menu.description}</div>
+                        })
+                    )
+                }
+            </div>
         </div>
         <button>Search</button>
     </div>
