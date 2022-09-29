@@ -5,8 +5,8 @@ import Searchbar from './components/Searchbar';
 
 function App() {
    const [data, setData] = useState({})
-  const handleSubmit = (coord) => {
-    setData(coord)
+  const handleSubmit = ({coordinates, city, country, state}) => {
+    setData({coordinates, city, country})
   }
   return (
     <div className="App">

@@ -6,7 +6,10 @@ function Searchbar(props) {
     const searchRef = useRef()
     const [dropDown, setDropDown] = useState([])
     const [searchActive, setSearchActive] = useState(false);
-    const [data, setData] = useState({})
+    const [coordinates, setCoordinates] = useState({});
+    const [state, setState] = useState("");
+    const [city, setCity] = useState("");
+    const [country, setCountry] = useState("")
 
     const getPredictions = (e) => {
         const val = e.target.value
@@ -27,20 +30,30 @@ function Searchbar(props) {
                 })
     }
 
-    const handleSubmit = (e, id) => {
+    const handleSubmit = (e, item) => {
         e.preventDefault();
+        console.log(item);
 
+        if(item.terms.length <= 2) {
+            setCity(item.terms[0].value);
+            setCountry(item.terms[1].value);
+        } else if(item.terms.length >= 3) {
+            setCity(item.terms[0].value);
+            setState(item.terms[1].value)
+            setCountry(item.terms[2].value);
+
+        }
         const config = {
             method: 'get',
             //made a proxy base url in package.json to fix the CORS error if youre using third party api
-            url: `details/json?place_id=${id}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`,
+            url: `details/json?place_id=${item.place_id}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`,
             headers: {  }
         }
 
         axios(config)
             .then(res => {
                 // setData(res.data.predictions)
-                setData(res.data.result.geometry.location)
+                setCoordinates(res.data.result.geometry.location)
             })
             .catch(err => {
                 console.log(err.response)
@@ -48,9 +61,9 @@ function Searchbar(props) {
     }
 
     useEffect(() => {
-      props.onSubmit(data)
+      props.onSubmit({city, state, country, coordinates})
     
-    }, [data])
+    }, [coordinates])
     
 
   return (
@@ -61,7 +74,7 @@ function Searchbar(props) {
                 {
                     dropDown.length >= 1 && (
                         dropDown.map(menu => {
-                            return <div className="item" key={menu.place_id} onClick={(e) => handleSubmit(e, menu.place_id)}>{menu.description}</div>
+                            return <div className="item" key={menu.place_id} onClick={(e) => handleSubmit(e, menu)}>{menu.description}</div>
                         })
                     )
                 }
