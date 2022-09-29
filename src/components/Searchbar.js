@@ -22,7 +22,6 @@ function Searchbar(props) {
 
             axios(config)
                 .then(res => {
-                    console.log(res.data.predictions)
                     setDropDown(res.data.predictions)
                 })
                 .catch(err => {
@@ -32,7 +31,6 @@ function Searchbar(props) {
 
     const handleSubmit = (e, item) => {
         e.preventDefault();
-        console.log(item);
 
         if(item.terms.length <= 2) {
             setCity(item.terms[0].value);
