@@ -14,27 +14,57 @@ export const getWeatherData = createAsyncThunk('/weather/getWeatherData', async 
     }
 })
 
-const initialState = {
-    weatherData: {},
-    status: 'idle', //'idle' | 'loading' | 'succeeded' | 'failed'
-    error: null
-}
 
 export const weatherSlice = createSlice({
     name: 'weather',
-    initialState,
+    initialState : {
+        weatherData: {
+            temp: 0,
+            dt: 0,
+            feelsLike: 0,
+            visibility: 0,
+            uvi: 0,
+            sunrise: 0,
+            sunset: 0,
+            humidity: 0,
+            main: "",
+            desc: "",
+            icon: "",
+            daily: [],
+            hourly: []
+        },
+        status: 'idle', //'idle' | 'loading' | 'succeeded' | 'failed',
+        error: null
+    },
 
     reducers: {
                 
     },
     extraReducers(builder) { 
         builder
-            .addCase(getWeatherData .pending, (state, action) => {
+            .addCase(getWeatherData.pending, (state, action) => {
                 state.status = 'loading'
             })
             .addCase(getWeatherData.fulfilled, (state, action) => {
-                state.status = 'succeded'
-                state.weatherData = action.payload
+                const { current, hourly, daily } = action.payload;
+                state.status = 'succeeded'
+                state.weatherData =  {
+                        temp: current.temp,
+                        dt: current.dt,
+                        feelsLike: current.feels_like,
+                        visibility: current.visibility,
+                        uvi: current.uvi,
+                        sunset: current.sunset,
+                        sunrise: current.sunrise,
+                        humidity: current.humidity,
+                        main: current.weather[0].main,
+                        desc: current.weather[0].description,
+                        icon: current.weather[0].icon,
+                        daily: daily,
+                        hourly: hourly,
+                }
+
+                //state.weatherData = action.payload
             })
             .addCase(getWeatherData.rejected, (state, action) => {
                 state.status = 'failed'

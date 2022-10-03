@@ -71,7 +71,7 @@ function Searchbar(props) {
     useEffect(() => {
         dispatch(getWeatherData(coordinates));
         dispatch(setPlace({city: city, country: country}))
-    }, [coordinates]);
+    }, [coordinates, city, country]);
 
     
     

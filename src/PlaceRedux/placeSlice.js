@@ -11,7 +11,6 @@ export const placeSlice = createSlice({
 
     reducers: {
         setPlace: (state, action) => {
-            console.log(action)
             state.place = action.payload
         }
     }
