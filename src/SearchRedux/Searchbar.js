@@ -1,9 +1,14 @@
 import React, { useState, useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import { getWeatherData } from './weatherSlice';
+import { setPlace } from '../PlaceRedux/placeSlice';
 import axios from 'axios'
-import './components.css'
+import './Search.css'
 
 function Searchbar(props) {
-    const searchRef = useRef()
+    const dispatch = useDispatch();
+    const searchRef = useRef();
+
     const [dropDown, setDropDown] = useState([])
     const [searchActive, setSearchActive] = useState(false);
     const [coordinates, setCoordinates] = useState({});
@@ -31,11 +36,13 @@ function Searchbar(props) {
 
     const handleSubmit = (e, item) => {
         e.preventDefault();
-
+        console.log(item)
         if(item.terms.length <= 2) {
+            
             setCity(item.terms[0].value);
             setCountry(item.terms[1].value);
         } else if(item.terms.length >= 3) {
+            
             setCity(item.terms[0].value);
             setState(item.terms[1].value)
             setCountry(item.terms[2].value);
@@ -56,15 +63,21 @@ function Searchbar(props) {
             .catch(err => {
                 console.log(err.response)
             })
+
+        
+        
     }
 
     useEffect(() => {
-      props.onSubmit({city, state, country, coordinates})
+        dispatch(getWeatherData(coordinates));
+        dispatch(setPlace({city: city, country: country}))
+    }, [coordinates]);
+
     
-    }, [coordinates])
     
 
   return (
+    <>
     <form className='searchbar' onSubmit={handleSubmit}>
         <div className="search-autocomplete">
             <input type="text" name="" id="" placeholder='Search your city' onChange={getPredictions} ref={searchRef} onFocus={() => setSearchActive(true)} onBlur={() => setSearchActive(false)}/>
@@ -79,8 +92,10 @@ function Searchbar(props) {
 
             </div>
         </div>
-        <button>Search</button>
+        <button >Search</button>
     </form>
+    <button>asd</button>
+    </>
   )
 }
 

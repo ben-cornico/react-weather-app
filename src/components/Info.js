@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import useGetDateTime from '../Hooks/useGetDateTime';
+import useGetDateTime from '../Hooks/Weather/useGetDateTime';
 import axios from 'axios'
 
 function Info(props) {
