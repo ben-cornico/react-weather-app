@@ -94,7 +94,6 @@ function Searchbar(props) {
         </div>
         <button >Search</button>
     </form>
-    <button>asd</button>
     </>
   )
 }

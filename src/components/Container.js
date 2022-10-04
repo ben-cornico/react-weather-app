@@ -2,27 +2,20 @@ import React, { useEffect, useState } from 'react';
 import Info from './Info';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectWeatherData } from '../SearchRedux/weatherSlice';
+import useGetDateTime from '../Hooks/Weather/useGetDateTime';
+
 function Container() {
   const [data, setData] = useState({})
-  const {weatherData} = useSelector(selectWeatherData)
-  const { place } = useSelector((state) => state)
-
-  console.log(place)
+  const {weatherData} = useSelector(selectWeatherData);
+  console.log(weatherData)
+  const { place } = useSelector((state) => state.place)
+  const { temp, feelsLike, main, desc, timezoneOffset, dt } = weatherData.weatherData;
+  const {city, country} = place;
   return (
     <div className='app-container'>
-        <div className="info-temp">
-            <div className="large-text">
-              {Math.round(weatherData.temp)}°C
-            </div>
-            <div className="small-text">Feels like 26°C</div>
-        </div>
 
-        {/* <div className="info-weather">
-            <div className="med-text">
-                {weather.current}
-            </div>
-            <div className="small-text">{weather.weatherDesc}</div>
-        </div> */}
+      <Info data={{temp, feelsLike, main, desc, dt, timezoneOffset}} place={{city, country}}/>
+
     </div>
   )
 }

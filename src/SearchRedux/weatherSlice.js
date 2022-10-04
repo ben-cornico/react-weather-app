@@ -4,7 +4,7 @@ import axios from 'axios';
 export const getWeatherData = createAsyncThunk('/weather/getWeatherData', async (action) => {
     
     console.log(action)
-    const {lat, lng} = action
+    const {lat, lng} = action;
     try {
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&exclude=minutely&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
         return response.data
@@ -31,7 +31,8 @@ export const weatherSlice = createSlice({
             desc: "",
             icon: "",
             daily: [],
-            hourly: []
+            hourly: [],
+            timezoneOffset: 0,
         },
         status: 'idle', //'idle' | 'loading' | 'succeeded' | 'failed',
         error: null
@@ -46,8 +47,9 @@ export const weatherSlice = createSlice({
                 state.status = 'loading'
             })
             .addCase(getWeatherData.fulfilled, (state, action) => {
-                const { current, hourly, daily } = action.payload;
-                state.status = 'succeeded'
+                const { current, hourly, daily, timezone_offset } = action.payload;
+                state.status = 'succeeded';
+                console.log(action.payload)
                 state.weatherData =  {
                         temp: current.temp,
                         dt: current.dt,
@@ -62,6 +64,7 @@ export const weatherSlice = createSlice({
                         icon: current.weather[0].icon,
                         daily: daily,
                         hourly: hourly,
+                        timezoneOffset: timezone_offset,
                 }
 
                 //state.weatherData = action.payload
@@ -72,5 +75,5 @@ export const weatherSlice = createSlice({
             })
     }
 })
-export const selectWeatherData =(state) => state.weatherData
+export const selectWeatherData =(state) => state
 export default weatherSlice.reducer
