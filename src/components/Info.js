@@ -3,8 +3,7 @@ import useGetDateTime from '../Hooks/Weather/useGetDateTime';
 
 function Info(props) {
     const {temp, feelsLike, main, desc, dt, timezoneOffset} = props.data;
-    console.log(timezoneOffset)
-    const {city, country} = props.place
+    const {city, country} = props.place;
     return (
     <div className='info'>
         <div className="info-temp">

@@ -3,7 +3,6 @@ import axios from 'axios';
 
 export const getWeatherData = createAsyncThunk('/weather/getWeatherData', async (action) => {
     
-    console.log(action)
     const {lat, lng} = action;
     try {
         const response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&exclude=minutely&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)

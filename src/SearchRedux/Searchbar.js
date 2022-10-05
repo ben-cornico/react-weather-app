@@ -17,6 +17,7 @@ function Searchbar(props) {
     const [country, setCountry] = useState("")
 
     const getPredictions = (e) => {
+        console.log('asd')
         const val = e.target.value
             const config = {
                 method: 'get',
