@@ -8,3 +8,44 @@
 .list-item:not(:last-child) {
     border-bottom: 1px solid #000;
 }
+
+
+/* INFO COMPONENT================================= */
+.info-temp {
+    display: flex;
+}
+.main-content {
+    display: flex;
+    font-size: 3.9rem;
+    font-weight: 400;
+}
+
+.large-text.main-content {
+    border: 1px solid black;
+    font-size: 4rem;
+    align-self: center;
+    font-weight: 400;
+}
+
+.switch, .temp-switch {
+    font-size: 2rem;
+    outline: none;
+    background-color: transparent;
+    border: none;
+}
+
+.temp-switch, .more-info {
+    margin-top: 0.7rem;
+}
+
+.more-info {
+    margin-left: 1rem;
+}
+
+.desc::first-letter {
+    text-transform: capitalize;
+}
+
+.info-city-country {
+    text-align: right;
+}

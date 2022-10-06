@@ -32,6 +32,8 @@ export const weatherSlice = createSlice({
             daily: [],
             hourly: [],
             timezoneOffset: 0,
+            wind: 0,
+            uv: 0
         },
         status: 'idle', //'idle' | 'loading' | 'succeeded' | 'failed',
         error: null
@@ -64,6 +66,8 @@ export const weatherSlice = createSlice({
                         daily: daily,
                         hourly: hourly,
                         timezoneOffset: timezone_offset,
+                        wind: current.wind_speed,
+                        uv: current.uvi
                 }
 
                 //state.weatherData = action.payload
