@@ -12,6 +12,7 @@ function Searchbar(props) {
     const [dropDown, setDropDown] = useState([])
     const [searchActive, setSearchActive] = useState(false);
     const [coordinates, setCoordinates] = useState({});
+    const [weatherPlace, setWeatherPlace] = useState("")
     const [state, setState] = useState("");
     const [city, setCity] = useState("");
     const [country, setCountry] = useState("")
@@ -37,18 +38,8 @@ function Searchbar(props) {
 
     const handleSubmit = (e, item) => {
         e.preventDefault();
-        console.log(item)
-        if(item.terms.length <= 2) {
-            
-            setCity(item.terms[0].value);
-            setCountry(item.terms[1].value);
-        } else if(item.terms.length >= 3) {
-            
-            setCity(item.terms[0].value);
-            setState(item.terms[1].value)
-            setCountry(item.terms[2].value);
+        setWeatherPlace(item.description)
 
-        }
         const config = {
             method: 'get',
             //made a proxy base url in package.json to fix the CORS error if youre using third party api
@@ -71,7 +62,7 @@ function Searchbar(props) {
 
     useEffect(() => {
         dispatch(getWeatherData(coordinates));
-        dispatch(setPlace({city: city, country: country}))
+        dispatch(setPlace(weatherPlace))
     }, [coordinates, city, country]);
 
     

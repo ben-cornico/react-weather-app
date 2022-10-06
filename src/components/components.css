@@ -11,6 +11,10 @@
 
 
 /* INFO COMPONENT================================= */
+.info {
+    display: flex;
+    justify-content: space-between;
+}
 .info-temp {
     display: flex;
 }
@@ -18,6 +22,10 @@
     display: flex;
     font-size: 3.9rem;
     font-weight: 400;
+}
+
+.main-content > img {
+    height: 100px;
 }
 
 .large-text.main-content {
@@ -40,6 +48,7 @@
 
 .more-info {
     margin-left: 1rem;
+
 }
 
 .desc::first-letter {
@@ -48,4 +57,20 @@
 
 .info-city-country {
     text-align: right;
+    overflow: visible;
+}
+
+.info-place {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0 0.5rem;
+    justify-content: flex-end;
+}
+
+.info-place > p, .info-place > div {
+    white-space: nowrap;
+}
+
+.info-place > p:not(:last-child):after {
+    content: ', '
 }
