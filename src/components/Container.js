@@ -1,8 +1,8 @@
 import React, { useEffect, useState } from 'react';
 import Info from './Info';
+import Hourly from './Hourly'
 import { useSelector, useDispatch } from 'react-redux';
 import { selectWeatherData } from '../SearchRedux/weatherSlice';
-import useGetDateTime from '../Hooks/Weather/useGetDateTime';
 import Daily from './Daily';
 
 function Container() {
@@ -25,6 +25,7 @@ function Container() {
         } = weatherData.weatherData;
   const {city, country} = place;
 
+
   console.log(weatherData)
   console.log(daily)
   return (
@@ -32,6 +33,7 @@ function Container() {
 
       <Info data={{temp, feelsLike, main, desc, dt, timezoneOffset, icon, wind, uvi, humidity}} place={{city, country}}/>
       <Daily data={{daily, timezoneOffset}} />
+      <Hourly data={{hourly, timezoneOffset}}/>
     </div>
   )
 }

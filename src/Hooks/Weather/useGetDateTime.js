@@ -14,8 +14,8 @@ function useGetDateTime (timezoneOffSet, format, dt) {
         } else if(format === "dailyDate") {
             setDate(new Date(resultDate).toLocaleDateString('en-US', {month:"long", day: "numeric"}))
         } else if(format === "hourlyUpdate") {
-            const dateNum = new Date(resultDate).toLocaleString('en-US',{hour: 'numeric', hour12: true});
-            return dateNum.split(" ").join("");
+            setDate(new Date(resultDate).toLocaleString('en-US',{hour: 'numeric', hour12: true}))
+
         }
         
     }, [dt])

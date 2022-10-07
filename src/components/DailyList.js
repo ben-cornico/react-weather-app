@@ -7,7 +7,7 @@ function DailyList({info}) {
   return (
     <div className="list-item">
         <div className="info-date">
-        {useGetDateTime(timezoneOffset, "dailyDate", dailyInfo.dt)}
+          {useGetDateTime(timezoneOffset, "dailyDate", dailyInfo.dt)}
         </div>
 
         <div className="info-temp">
@@ -17,7 +17,7 @@ function DailyList({info}) {
         </div>
 
         <div className="info-icon">
-        <img src={`http://openweathermap.org/img/wn/${dailyInfo.weather[0].icon}@2x.png`} alt="" />
+          <img src={`http://openweathermap.org/img/wn/${dailyInfo.weather[0].icon}@2x.png`} alt="" />
         </div>
 
         <div className="info-desc">

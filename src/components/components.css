@@ -13,6 +13,7 @@
 /* INFO COMPONENT================================= */
 .info {
     display: flex;
+    flex-wrap: wrap;
     justify-content: space-between;
 }
 .info-temp {
@@ -35,6 +36,11 @@
     font-weight: 400;
 }
 
+.temp-switch {
+    display: flex;
+    justify-content: space-between;
+    gap: 0.5rem;
+}
 .switch, .temp-switch {
     font-size: 2rem;
     outline: none;
@@ -48,7 +54,7 @@
 
 .more-info {
     margin-left: 1rem;
-
+    color: #505050;
 }
 
 .desc::first-letter {
@@ -73,4 +79,16 @@
 
 .info-place > p:not(:last-child):after {
     content: ', '
+}
+
+.switch.active {
+    font-weight: 600;
+}
+
+.switch {
+    font-weight: 200;
+}
+
+.info-city-country > .small-text {
+    color: #505050;
 }
