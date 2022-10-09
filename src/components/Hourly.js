@@ -7,6 +7,9 @@ function Hourly({data}) {
     const info = useHourlyUpdate(hourly);
   return (
     <div className='hourly'>
+      <div className="large-text">
+        HOURLY UPDATES
+      </div>
         {
           info.map(hourlyInfo => {
             return (

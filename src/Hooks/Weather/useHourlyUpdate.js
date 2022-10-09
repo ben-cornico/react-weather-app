@@ -3,8 +3,6 @@ import useGetDateTime from './useGetDateTime';
 
 function useHourlyUpdate(hourlyInfo) {
     const hourly = [];
-    console.log(hourlyInfo)
-    // hourlyInfo.length = 10;
     hourlyInfo.forEach(element => {
         hourly.push({
             dt: element.dt,

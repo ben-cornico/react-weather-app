@@ -4,13 +4,14 @@
     display: flex;
     width: 100%;
     position: relative;
+    padding: 1rem;
 }
 
 
 .dropdown {
     position: absolute;
     transition: 1s all ease;
-    top: 3rem;
+    top: 4rem;
     width: 100%;
     background-color: #8f8f8f;
     opacity: 0;
@@ -56,5 +57,9 @@
 
 .searchar > .search-autocomplete, .searchbar > button {
     padding: 0.5rem;
+}
+
+.search-autocomplete {
+    position: relative;
 }
 /* ============================================== */

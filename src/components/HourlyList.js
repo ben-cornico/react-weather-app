@@ -4,7 +4,6 @@ import './components.css'
 
 function HourlyList({info}) {
     const { hourlyInfo, timezoneOffset } = info;
-    console.log(hourlyInfo)
   return (
     <div className='list-item'>
         <div className="info-date">

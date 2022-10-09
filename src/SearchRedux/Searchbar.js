@@ -13,8 +13,6 @@ function Searchbar(props) {
     const [searchActive, setSearchActive] = useState(false);
     const [coordinates, setCoordinates] = useState({});
     const [weatherPlace, setWeatherPlace] = useState("")
-    const [state, setState] = useState("");
-    const [city, setCity] = useState("");
     const [country, setCountry] = useState("")
 
     const getPredictions = (e) => {
@@ -63,9 +61,16 @@ function Searchbar(props) {
     useEffect(() => {
         dispatch(getWeatherData(coordinates));
         dispatch(setPlace(weatherPlace))
-    }, [coordinates, city, country]);
+    }, [coordinates]);
 
-    
+        
+    // useEffect(() => {
+    //     navigator.geolocation.getCurrentPosition(function(position) {
+    //         console.log(position)
+    //         setCoordinates({lat: position.coords.latitude, lng: position.coords.longitude});
+            
+    //     });
+    // }, [])
     
 
   return (

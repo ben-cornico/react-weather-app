@@ -4,11 +4,10 @@ import Hourly from './Hourly'
 import { useSelector, useDispatch } from 'react-redux';
 import { selectWeatherData } from '../SearchRedux/weatherSlice';
 import Daily from './Daily';
+import Footer from './Footer';
 
 function Container() {
-  const [data, setData] = useState({})
   const {weatherData} = useSelector(selectWeatherData);
-  console.log(weatherData)
   const { place } = useSelector((state) => state.place)
   const { temp,
           feelsLike,
@@ -21,19 +20,27 @@ function Container() {
           icon,
           wind,
           uvi,
-          humidity
+          humidity,
+          visibility
         } = weatherData.weatherData;
   const {city, country} = place;
 
-
   console.log(weatherData)
-  console.log(daily)
   return (
     <div className='app-container'>
+      {
+        weatherData.status === 'loading' ? "LOKDIT" : (
+          <>
+            <Info data={{temp, feelsLike, main, desc, dt, timezoneOffset, icon, wind, uvi, humidity}} place={{city, country}}/>
+            <div className="updates">
+              <Daily data={{daily, timezoneOffset, humidity, wind, uvi, visibility}} />
+              <Hourly data={{hourly, timezoneOffset}}/>
 
-      <Info data={{temp, feelsLike, main, desc, dt, timezoneOffset, icon, wind, uvi, humidity}} place={{city, country}}/>
-      <Daily data={{daily, timezoneOffset}} />
-      <Hourly data={{hourly, timezoneOffset}}/>
+            </div>
+          </>
+        )
+      }
+
     </div>
   )
 }
