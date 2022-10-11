@@ -1,11 +1,11 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getWeatherData } from './weatherSlice';
-import { setPlace } from '../PlaceRedux/placeSlice';
+import { getWeatherData } from '../../Redux/weatherSlice';
+import { setPlace } from '../../Redux/placeSlice';
 import axios from 'axios'
 import './Search.css'
 
-function Searchbar(props) {
+function Searchbar() {
     const dispatch = useDispatch();
     const searchRef = useRef();
 
@@ -13,7 +13,6 @@ function Searchbar(props) {
     const [searchActive, setSearchActive] = useState(false);
     const [coordinates, setCoordinates] = useState({});
     const [weatherPlace, setWeatherPlace] = useState("")
-    const [country, setCountry] = useState("")
 
     const getPredictions = (e) => {
         console.log('asd')
@@ -62,15 +61,6 @@ function Searchbar(props) {
         dispatch(getWeatherData(coordinates));
         dispatch(setPlace(weatherPlace))
     }, [coordinates]);
-
-        
-    // useEffect(() => {
-    //     navigator.geolocation.getCurrentPosition(function(position) {
-    //         console.log(position)
-    //         setCoordinates({lat: position.coords.latitude, lng: position.coords.longitude});
-            
-    //     });
-    // }, [])
     
 
   return (
@@ -89,7 +79,7 @@ function Searchbar(props) {
 
             </div>
         </div>
-        <button >Search</button>
+        <button className='btn-search'>Search</button>
     </form>
     </>
   )

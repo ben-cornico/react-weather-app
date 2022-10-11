@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import weatherReducer from './SearchRedux/weatherSlice';
-import placeReducer from './PlaceRedux/placeSlice'
+import weatherReducer from './Redux/weatherSlice';
+import placeReducer from './Redux/placeSlice';
 
 export default configureStore({
   reducer: {
     weatherData: weatherReducer,
-    place: placeReducer
+    place: placeReducer,
   },
 })

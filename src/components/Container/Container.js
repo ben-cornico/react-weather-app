@@ -1,10 +1,8 @@
 import React, { useEffect, useState } from 'react';
-import Info from './Info';
-import Hourly from './Hourly'
+import Info from '../Info/Info';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectWeatherData } from '../SearchRedux/weatherSlice';
-import Daily from './Daily';
-import Footer from './Footer';
+import { selectWeatherData } from '../../Redux/weatherSlice';
+import Updates from '../Updates/Updates';
 
 function Container() {
   const {weatherData} = useSelector(selectWeatherData);
@@ -25,7 +23,6 @@ function Container() {
         } = weatherData.weatherData;
   const {city, country} = place;
 
-  console.log(weatherData)
   return (
     <div className='app-container'>
       {
@@ -33,8 +30,7 @@ function Container() {
           <>
             <Info data={{temp, feelsLike, main, desc, dt, timezoneOffset, icon, wind, uvi, humidity}} place={{city, country}}/>
             <div className="updates">
-              <Daily data={{daily, timezoneOffset, humidity, wind, uvi, visibility}} />
-              <Hourly data={{hourly, timezoneOffset}}/>
+              <Updates data={{daily, hourly, timezoneOffset}}/>
 
             </div>
           </>

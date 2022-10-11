@@ -4,7 +4,7 @@
   box-sizing: border-box;
 }
 
-.App {
+/* .App {
   height: 100vh;
   display: flex;
   flex-direction: column;
@@ -26,4 +26,5 @@
 .info {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-}
+} */
+

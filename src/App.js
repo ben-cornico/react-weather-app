@@ -1,7 +1,7 @@
 import './App.css';
-import Container from './components/Container';
-import Searchbar from './SearchRedux/Searchbar';
-import Footer from './components/Footer';
+import Container from './components/Container/Container';
+import Searchbar from './components/SearchBar/Searchbar';
+import Footer from './components/Footer/Footer';
 
 function App() {
   return (

@@ -1,0 +1,7 @@
+.info-temp-main {
+    display: flex;
+}
+
+.main-icon > img {
+    height: 150px;
+}
