@@ -29,10 +29,8 @@ function Container() {
         weatherData.status === 'loading' ? "LOKDIT" : (
           <>
             <Info data={{temp, feelsLike, main, desc, dt, timezoneOffset, icon, wind, uvi, humidity}} place={{city, country}}/>
-            <div className="updates">
               <Updates data={{daily, hourly, timezoneOffset}}/>
 
-            </div>
           </>
         )
       }

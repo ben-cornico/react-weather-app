@@ -1,5 +1,6 @@
 import React from 'react';
-import '../components.css'
+import '../components.css';
+import './Updates.css'
 import useHourlyUpdate from '../../Hooks/useHourlyUpdate';
 import List from '../List/List';
 import useDailyUpdate from '../../Hooks/useDailyUpdate';

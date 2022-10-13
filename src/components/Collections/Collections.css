@@ -1,0 +1,95 @@
+.collections {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+}
+
+
+
+.card {
+    width: 330px;
+    background-color: bisque;
+    padding: 0.5rem;
+}
+
+.controls {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 0.5rem;
+}
+
+.info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.place {
+    font-weight: ;
+}
+
+.main {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+.main-weather-icon {
+    height: 85px;
+}
+
+.main-weather-desc {
+    font-size: 0.95rem;
+}
+
+.main-temp {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.temp {
+    font-size: 4rem;
+    font-weight: 500;
+}
+
+.feelslike {
+    font-size: 1.25rem;
+}
+
+.card > .card-form > div {
+    width: 100%;
+    padding: 0.25rem;
+    background-color: #ffffff;
+}
+
+.card-form {
+    display: flex;
+    justify-content: center;
+}
+
+.input-search {
+    outline: none;
+    border: none;
+    width: 100%;
+}
+
+.card-btn-search {
+    padding: 0.5rem;
+    border: none;
+    background-color: blue;
+    color: #ffffff;
+}
+
+.extras {
+    display: flex;
+    font-size: 0.90rem;
+    justify-content: space-between;
+    color: #494949;
+}
+
+.extras > p {
+    white-space: nowrap
+}

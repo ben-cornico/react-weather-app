@@ -1,3 +1,8 @@
+.info {
+    /* THIS IS TEMPORARY */
+    background-color: antiquewhite;
+}
+
 .info-temp-main {
     display: flex;
 }
@@ -5,3 +10,28 @@
 .main-icon > img {
     height: 150px;
 }
+
+.top-info {
+    display: flex;
+    justify-content: space-around;
+}
+
+.main {
+    display: flex;
+    justify-content: space-around;
+}
+
+.secondary-main {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.weekday {
+    font-size: 2rem;
+    font-weight: 500;
+}
+/* 
+.time, .main-weather {
+    font-size: larger;
+} */

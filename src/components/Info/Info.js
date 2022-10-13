@@ -25,9 +25,22 @@ function Info(props) {
     
     return (
     <div className='info'>
+        <div className="top-info">
+            <div className="place">
+                {
+                    place
+                }
+            </div>
 
+            <div className="switch">
+                C | F
+            </div>
+
+            <div className="date">
+                {date}
+            </div>
+        </div>
         <div className="main">
-
             <div className="info-temp-main">
                     <div className="main-icon">
                         <img src={`http://openweathermap.org/img/wn/${icon}@2x.png`}/>
@@ -63,29 +76,9 @@ function Info(props) {
             </div>
         </div>
 
-        <div className="weather-info">
-            <div>
-                {main}
-            </div>
-            <div className="small-text desc">
-                {desc}
-            </div>
-        </div>
+        
 
-        <div className="info-city-country">
-            <div className=" info-place">
-                {
-                    arrayPlace.map(x => {
-                        return <p>{x}</p>
-                    })
-                }
-            </div>
-            <div className="small-text">
-                {
-                    console.log(useGetDateTime(timezoneOffset, "currentDate", dt))
-                }
-            </div>
-        </div>
+        
     </div>
   )
 }

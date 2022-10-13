@@ -28,3 +28,18 @@
   grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
 } */
 
+.testing {
+  height: 100vh;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: blue;
+  margin: auto 0;
+}
+
+.test-container {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
