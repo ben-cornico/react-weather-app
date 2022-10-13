@@ -3,17 +3,21 @@ import { createSlice } from "@reduxjs/toolkit";
 export const collectionsSlice = createSlice({
     name: 'collections',
     initialState: {
-        collections: ["1"]
+        collections: [0]
     },
 
     reducers: {
         addCollection: (state) => {
-          state.collections.push("1")  
+          state.collections.push(state.collections.length)  
+        },
+        deleteCollection: (state, action) => {
+            state.collections.splice(action.payload, 1);
         }
+        
     }
 })
 
-export const {addCollection} = collectionsSlice.actions;
+export const {addCollection, deleteCollection} = collectionsSlice.actions;
 
 export const selectCollection = (state) => state.collections;
 

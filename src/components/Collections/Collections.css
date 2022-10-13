@@ -7,6 +7,7 @@
 
 
 .card {
+    position: relative;
     width: 330px;
     background-color: bisque;
     padding: 0.5rem;
@@ -19,6 +20,21 @@
     padding-bottom: 0.5rem;
 }
 
+.controls > .close {
+    color: #ec4242;
+    font-size: 1.25rem;
+    text-align: center;
+    height: 30px;
+    width: 30px;
+    cursor: pointer;
+}
+
+.controls > .close:hover {
+    border: 1px solid #ec4242;
+}
+
+
+
 .info {
     display: flex;
     justify-content: space-between;
@@ -26,7 +42,8 @@
 }
 
 .place {
-    font-weight: ;
+    font-weight: 500;
+    color: #494949;
 }
 
 .main {
@@ -35,7 +52,12 @@
     align-items: center;
 }
 
-
+.date-time {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    font-size: 0.75rem;
+}
 .main-weather-icon {
     height: 85px;
 }
@@ -84,6 +106,7 @@
 }
 
 .extras {
+    padding: 0.25rem 0 0.25rem 0;
     display: flex;
     font-size: 0.90rem;
     justify-content: space-between;

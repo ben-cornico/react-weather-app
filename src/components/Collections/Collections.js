@@ -1,24 +1,27 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectCollection } from '../../Redux/collectionsSlice';
-import { addCollection } from '../../Redux/collectionsSlice';
+import { selectCollection, addCollection, deleteCollection } from '../../Redux/collectionsSlice';
+import Toggler from '../Toggler/Toggler';
 import './Collections.css'
 
 const Collections = () => {
     const dispatch = useDispatch()
     const {collections} = useSelector(selectCollection)
+
+    const handleClick =(index) => {
+        dispatch(deleteCollection(index));
+        console.log(collections)
+    }
   return (
     <div className='collections'>
         {
-            collections.map(item => {
+            collections.map((item, index) => {
                 return (
-                    <div className="card">
+                    <div className="card" key={index}>
                         <div className="controls">
-                            <div className="switch">
-                                C | F
-                            </div>
+                            <Toggler />
 
-                            <div className="close">
+                            <div className="close" onClick={() => handleClick(index)}>
                                 <span className='mdi mdi-close'></span>
                             </div>
                         </div>
@@ -48,9 +51,10 @@ const Collections = () => {
                                     Broken Clouds
                                 </p>
                             </div>
-                            <p>
-                                11:00pm
-                            </p>
+                            <div className='date-time'>
+                                <p>2022/10/12</p>
+                                <p>11:00pm</p>
+                            </div>
                             <div className="main-temp">
                                 <p className="temp">
                                     15°C
