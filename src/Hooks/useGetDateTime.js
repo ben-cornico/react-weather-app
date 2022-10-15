@@ -11,7 +11,7 @@ function useGetDateTime (timezoneOffSet, format, dt) {
         const resultDate = utc + (1000 * timezoneOffSet);
         if(format === "currentDate") {
             const weekday = new Date(resultDate).toLocaleDateString('en-US', {weekday: "long"});
-            const date = new Date(resultDate)   .toLocaleDateString('en-US', {month:"long", day: "numeric", year: 'numeric'})
+            const date = new Date(resultDate)   .toLocaleDateString('en-US', {month:"numeric", day: "numeric", year: 'numeric'})
             const time = new Date(resultDate)   .toLocaleString('en-US', {hour: 'numeric', hour12: true, minute: 'numeric' })
             setDate({weekday, date, time})
         } else if(format === "dailyDate") {

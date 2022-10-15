@@ -58,7 +58,11 @@ export const collectionsSlice = createSlice({
             const {place, collectionIndex} = action.payload
             state.collections[collectionIndex] = {...state.collections[collectionIndex], place};
         },
-        
+        setCollectionUnit: (state, action) => {
+            const { unit, collectionIndex } = action.payload;
+            state.collections[collectionIndex] = {...state.collections[collectionIndex], unit}
+
+        }
     },
 
     extraReducers(builder) {
@@ -104,7 +108,7 @@ export const collectionsSlice = createSlice({
     }
 })
 
-export const { addCollection, deleteCollection, setCollectionPlace } = collectionsSlice.actions;
+export const { addCollection, deleteCollection, setCollectionPlace, setCollectionUnit } = collectionsSlice.actions;
 
 export const selectCollection = (state) => state.collections;
 
