@@ -1,4 +1,4 @@
-
+// THIS WILL BE FOR FUTURE UPDATES
 function useDailyUpdate(dailyInfo) {
     const daily = [];
     dailyInfo.forEach(element => {

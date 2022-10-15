@@ -2,13 +2,11 @@ import React from 'react'
 import useGetDateTime from '../../Hooks/useGetDateTime';
 import Toggler from '../Toggler/Toggler';
 import Searchbar from '../SearchBar/Searchbar';
-import { useDispatch, useSelector } from 'react-redux';
-import { selectCollection, deleteCollection, } from '../../Redux/collectionsSlice';
+import { useDispatch } from 'react-redux';
+import { deleteCollection, } from '../../Redux/collectionsSlice';
 
 const Card = ({data, collectionIndex}) => {
-    console.log(collectionIndex)
     const dispatch = useDispatch()
-    const {collections} = useSelector(selectCollection)
 
 const handleClick =(index) => {
     dispatch(deleteCollection(index));

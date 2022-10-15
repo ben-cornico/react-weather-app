@@ -56,8 +56,6 @@ function Searchbar({collectionIndex}) {
     }
 
     useEffect(() => {
-        // dispatch(setCollectionPlace(weatherPlace))
-        console.log(coordinates)
         dispatch(setCollectionWeather({coordinates, collectionIndex}));
 
     }, [coordinates, weatherPlace]);

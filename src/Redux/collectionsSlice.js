@@ -3,6 +3,7 @@ import axios from "axios";
 
 const emptyState = {
     status: 'idle', //'idle' | 'loading' | 'succeeded' | 'failed',
+    unit: "celcius", // celcius | fahrenheit
     error: "",
     place: "",
     weather: {
@@ -28,9 +29,9 @@ export const setCollectionWeather = createAsyncThunk('/weather/setCollectionWeat
     try {
 
         if(lat !== undefined && lng !== undefined) {
-            const response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&exclude=minutely&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
-            const data = {collectionIndex, weatherData: response.data}
-            return data
+        const response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&exclude=minutely&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
+        const data = {collectionIndex, weatherData: response.data}
+        return data
 
         }
 
@@ -63,11 +64,8 @@ export const collectionsSlice = createSlice({
     extraReducers(builder) {
         builder
             .addCase(setCollectionWeather.fulfilled, (state, action) => {
-                console.log("SUCCESS")
-                console.log(action)
 
                 if(action.payload !== undefined) {
-                    
                     const { collectionIndex } = action.payload
                     const { current, timezone_offset } = action.payload.weatherData;
                     state.collections[action.payload.collectionIndex] = {
@@ -94,11 +92,14 @@ export const collectionsSlice = createSlice({
                 }
             })
             .addCase(setCollectionWeather.pending, (state, action) => {
-                console.log("PENDING")
             })
             .addCase(setCollectionWeather.rejected, (state, action) => {
-                console.log(action.error.message)
-                console.log("REJECTED")
+                const { collectionIndex } = action.meta.arg;
+                state.collections[collectionIndex] = {
+                    ...state.collections[collectionIndex],
+                    status: 'failed',
+                    error: action.error.message
+                }
             })
     }
 })

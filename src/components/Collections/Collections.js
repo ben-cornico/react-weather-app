@@ -9,7 +9,6 @@ const Collections = () => {
     const dispatch = useDispatch()
     const {collections} = useSelector(selectCollection)
 
-
   return (
     <div className={collections.length <= 3 ? 'collections-centered' : 'collections'} >
         {
@@ -27,6 +26,7 @@ const Collections = () => {
         <div className="card-add" onClick={() => dispatch(addCollection())}>
             ADD
         </div>
+        <button onClick={()=> console.log(collections)}>CLICK ME</button>
     </div>
   )
 }
