@@ -1,10 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectCollection, addCollection, deleteCollection } from '../../Redux/collectionsSlice';
-import Toggler from '../Toggler/Toggler';
-import Searchbar from '../SearchBar/Searchbar';
 import './Collections.css'
-import useGetDateTime from '../../Hooks/useGetDateTime';
 import Card from '../Card/Card';
 import EmptyCard from '../Card/EmptyCard';
 

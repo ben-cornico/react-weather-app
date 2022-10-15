@@ -1,7 +1,5 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { getWeatherData } from '../../Redux/weatherSlice';
-import { setPlace } from '../../Redux/placeSlice';
 import { setCollectionWeather, setCollectionPlace } from '../../Redux/collectionsSlice';
 import axios from 'axios'
 import './Search.css'

@@ -12,9 +12,7 @@ const Card = ({data, collectionIndex}) => {
 
 const handleClick =(index) => {
     dispatch(deleteCollection(index));
-    console.log(collections)
 }
-    console.log(data)
     const { weekday, date, time } = useGetDateTime(data.dt.dt, "currentDate", data.dt.timezone_offset)
   return (
     <div className="card" >

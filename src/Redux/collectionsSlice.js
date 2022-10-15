@@ -26,9 +26,13 @@ export const setCollectionWeather = createAsyncThunk('/weather/setCollectionWeat
     const {lat, lng} = action.coordinates;
     const {collectionIndex} = action;
     try {
-        const response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&exclude=minutely&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
-        const data = {collectionIndex, weatherData: response.data}
-        return data
+
+        if(lat !== undefined && lng !== undefined) {
+            const response = await axios.get(`https://api.openweathermap.org/data/2.5/onecall?lat=${lat}&lon=${lng}&units=metric&exclude=minutely&appid=${process.env.REACT_APP_WEATHER_API_KEY}`)
+            const data = {collectionIndex, weatherData: response.data}
+            return data
+
+        }
 
     } catch (err) {
         console.log(err.message)
@@ -60,12 +64,12 @@ export const collectionsSlice = createSlice({
         builder
             .addCase(setCollectionWeather.fulfilled, (state, action) => {
                 console.log("SUCCESS")
-                console.log(action.payload.weatherData)
-                const { current, timezone_offset } = action.payload.weatherData;
-                const { collectionIndex } = action.payload
                 console.log(action)
 
-                if(action.payload.weatherData !== undefined) {
+                if(action.payload !== undefined) {
+                    
+                    const { collectionIndex } = action.payload
+                    const { current, timezone_offset } = action.payload.weatherData;
                     state.collections[action.payload.collectionIndex] = {
                         ...state.collections[collectionIndex],
                         status: 'success',
