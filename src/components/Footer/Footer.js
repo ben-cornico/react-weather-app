@@ -3,10 +3,10 @@ import './Footer.css'
 
 function Footer() {
   return (
-    <div class="footer">
+    <div className="footer">
         Created by <a href="https://github.com/ben-cornico">
             Ben Carlo Cornico
-        <span class="mdi mdi-github"></span></a>
+        <span className="mdi mdi-github"></span></a>
     </div>
   )
 }

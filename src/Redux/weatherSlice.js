@@ -1,5 +1,6 @@
 import { createSlice, createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
+import { setCollectionWeather } from './collectionsSlice';
 
 export const getWeatherData = createAsyncThunk('/weather/getWeatherData', async (action) => {
     
@@ -22,18 +23,18 @@ export const weatherSlice = createSlice({
             dt: 0,
             feelsLike: 0,
             visibility: 0,
-            uvi: 0,
-            sunrise: 0,
-            sunset: 0,
             humidity: 0,
             main: "",
             desc: "",
             icon: "",
-            daily: [],
-            hourly: [],
             timezoneOffset: 0,
             wind: 0,
-            uv: 0
+            // uv: 0
+            // uvi: 0,
+            // sunrise: 0,
+            // sunset: 0,
+            // daily: [],
+            // hourly: [],
         },
         status: 'idle', //'idle' | 'loading' | 'succeeded' | 'failed',
         error: null
@@ -56,21 +57,20 @@ export const weatherSlice = createSlice({
                         dt: current.dt,
                         feelsLike: current.feels_like,
                         visibility: current.visibility,
-                        uvi: current.uvi,
-                        sunset: current.sunset,
-                        sunrise: current.sunrise,
                         humidity: current.humidity,
                         main: current.weather[0].main,
                         desc: current.weather[0].description,
                         icon: current.weather[0].icon,
-                        daily: daily,
-                        hourly: hourly,
                         timezoneOffset: timezone_offset,
                         wind: current.wind_speed,
-                        uv: current.uvi
+                        // uv: current.uvi
+                        // uvi: current.uvi,
+                        // sunset: current.sunset,
+                        // sunrise: current.sunrise,
+                        // daily: daily,
+                        // hourly: hourly,
                 }
 
-                //state.weatherData = action.payload
             })
             .addCase(getWeatherData.rejected, (state, action) => {
                 state.status = 'failed'

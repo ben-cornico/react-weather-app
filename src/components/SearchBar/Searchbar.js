@@ -2,10 +2,11 @@ import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { getWeatherData } from '../../Redux/weatherSlice';
 import { setPlace } from '../../Redux/placeSlice';
+import { setCollectionWeather, setCollectionPlace } from '../../Redux/collectionsSlice';
 import axios from 'axios'
 import './Search.css'
 
-function Searchbar() {
+function Searchbar({collectionIndex}) {
     const dispatch = useDispatch();
     const searchRef = useRef();
 
@@ -15,7 +16,6 @@ function Searchbar() {
     const [weatherPlace, setWeatherPlace] = useState("")
 
     const getPredictions = (e) => {
-        console.log('asd')
         const val = e.target.value
             const config = {
                 method: 'get',
@@ -35,7 +35,8 @@ function Searchbar() {
 
     const handleSubmit = (e, item) => {
         e.preventDefault();
-        setWeatherPlace(item.description)
+        setWeatherPlace(item.description);
+        dispatch(setCollectionPlace({place: item.description, collectionIndex}))
 
         const config = {
             method: 'get',
@@ -46,8 +47,7 @@ function Searchbar() {
 
         axios(config)
             .then(res => {
-                // setData(res.data.predictions)
-                setCoordinates(res.data.result.geometry.location)
+                setCoordinates(res.data.result.geometry.location);
             })
             .catch(err => {
                 console.log(err.response)
@@ -58,9 +58,11 @@ function Searchbar() {
     }
 
     useEffect(() => {
-        dispatch(getWeatherData(coordinates));
-        dispatch(setPlace(weatherPlace))
-    }, [coordinates]);
+        // dispatch(setCollectionPlace(weatherPlace))
+        console.log(coordinates)
+        dispatch(setCollectionWeather({coordinates, collectionIndex}));
+
+    }, [coordinates, weatherPlace]);
     
 
   return (
@@ -79,7 +81,9 @@ function Searchbar() {
 
             </div>
         </div>
-        <button className='btn-search'>Search</button>
+        <button className='btn-search'>
+            <span className="mdi mdi-magnify"></span>
+        </button>
     </form>
     </>
   )

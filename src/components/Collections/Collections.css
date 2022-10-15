@@ -1,17 +1,13 @@
-.collections {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-}
 
 
-
-.card {
+.card, .card-add {
     position: relative;
-    width: 330px;
+    height: 245px;
     background-color: bisque;
-    padding: 0.5rem;
+    padding: 0.75rem;
+    border-radius: 0.75rem;
 }
+
 
 .controls {
     display: flex;
@@ -92,12 +88,6 @@
     justify-content: center;
 }
 
-.input-search {
-    outline: none;
-    border: none;
-    width: 100%;
-}
-
 .card-btn-search {
     padding: 0.5rem;
     border: none;
@@ -110,9 +100,38 @@
     display: flex;
     font-size: 0.90rem;
     justify-content: space-between;
-    color: #494949;
 }
 
 .extras > p {
     white-space: nowrap
+}
+
+
+.collections {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(360px, 1fr));
+    grid-template-rows: repeat(auto-fill, 245px);
+    gap: 1rem;
+}
+
+.collections-centered {
+
+    width: 100%;
+    display: flex;
+    gap: 1rem;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.collections-centered > .card-add, .collections-centered > .card {
+    width: 360px;
+}
+
+
+
+.input-search {
+    outline: none;
+    border: none;
+    width: 100%;
 }
