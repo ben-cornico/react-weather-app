@@ -1,3 +1,5 @@
+import './Card.css'
+
 import React, { useState, useEffect } from 'react'
 import useGetDateTime from '../../Hooks/useGetDateTime';
 

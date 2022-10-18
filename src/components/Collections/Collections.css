@@ -1,111 +1,5 @@
 
 
-.card, .card-add {
-    position: relative;
-    height: 245px;
-    background-color: bisque;
-    padding: 0.75rem;
-    border-radius: 0.75rem;
-}
-
-
-.controls {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding-bottom: 0.5rem;
-}
-
-.controls > .close {
-    color: #ec4242;
-    font-size: 1.25rem;
-    text-align: center;
-    height: 30px;
-    width: 30px;
-    cursor: pointer;
-}
-
-.controls > .close:hover {
-    border: 1px solid #ec4242;
-}
-
-
-
-.info {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.place {
-    font-weight: 500;
-    color: #494949;
-}
-
-.main {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-}
-
-.date-time {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    font-size: 0.75rem;
-}
-.main-weather-icon {
-    height: 85px;
-}
-
-.main-weather-desc {
-    font-size: 0.95rem;
-}
-
-.main-temp {
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.temp {
-    font-size: 4rem;
-    font-weight: 500;
-}
-
-.feelslike {
-    font-size: 1.25rem;
-}
-
-.card > .card-form > div {
-    width: 100%;
-    padding: 0.25rem;
-    background-color: #ffffff;
-}
-
-.card-form {
-    display: flex;
-    justify-content: center;
-}
-
-.card-btn-search {
-    padding: 0.5rem;
-    border: none;
-    background-color: blue;
-    color: #ffffff;
-}
-
-.extras {
-    padding: 0.25rem 0 0.25rem 0;
-    display: flex;
-    font-size: 0.90rem;
-    justify-content: space-between;
-}
-
-.extras > p {
-    white-space: nowrap
-}
-
 
 .collections {
     display: grid;
@@ -128,10 +22,29 @@
     width: 360px;
 }
 
-
-
 .input-search {
     outline: none;
     border: none;
     width: 100%;
+}
+
+.card-add {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.card-add > div {
+    width: 80%;
+    padding: 1rem;
+    text-align: center;
+    background-color: #0C6291 ;
+    color: #ffffff;
+    cursor: pointer;
+    transition: 0.3s ease;
+}
+
+.card-add > div:hover {
+    transform: scale(1.2);
+    box-shadow: 5px 10px 8px #888888;
 }

@@ -1,12 +1,11 @@
 .switch-button {
-    background: rgba(255, 255, 255, 0.56);
-    border-radius: 30px;
+    background: rgba(100, 182, 172, 0.56);
     overflow: hidden;
     width: 240px;
     text-align: center;
     font-size: 0.80rem;
     letter-spacing: 1px;
-    color: #155FFF;
+    color: #000000;
     position: relative;
     padding-right: 120px;
     position: relative;
@@ -52,13 +51,12 @@
 
 .switch-button-checkbox:before, .switch-button-label:before {
     content: "";
-    background: #fff;
+    background: #64B6AC;
     height: 100%;
     width: 100%;
     position: absolute;
     left: 0;
     top: 0;
-    border-radius: 30px;
     transform: translateX(0);
     transition: transform 300ms;
 }

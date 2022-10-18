@@ -23,10 +23,11 @@ const Collections = () => {
             })
         }
 
-        <div className="card-add" onClick={() => dispatch(addCollection())}>
-            ADD
+        <div className="card-add">
+            <div onClick={() => dispatch(addCollection())}>
+                ADD WEATHER CARD
+            </div>
         </div>
-        <button onClick={()=> console.log(collections)}>CLICK ME</button>
     </div>
   )
 }

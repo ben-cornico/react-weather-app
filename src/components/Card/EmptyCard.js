@@ -24,16 +24,13 @@ const handleClick =(index) => {
         <Searchbar collectionIndex={collectionIndex}/>
         
         
-        <>
-            <div className="info">
+        {/* <>
+            <div className="info empty">
                 <p className="place">
-                </p>
-                <p className="date">
-                    October 12, 2022
                 </p>
             </div>
 
-            <div className="main">
+            <div className="main empty">
                 <div className="main-weather">
                     <img src="" alt="" className='main-weather-icon'/>
                     <p className='main-weather-desc'>
@@ -54,13 +51,14 @@ const handleClick =(index) => {
 
             
 
-            <div className="extras">
-                    <p>Humidity: 87%</p>
-                    <p>Visibility: 10.0km</p>
-                    <p>Wind: 1km/hr</p>
+            <div className="extras empty">
             </div>
         
-        </>
+        </> */}
+
+        <div className="warning">
+            Enter your city to check the weather.
+        </div>
     </div>
   )
 }

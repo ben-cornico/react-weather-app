@@ -8,9 +8,7 @@ function App() {
   const test = ["TESTING", "TESTING"]
   return (
     <div className="App">
-      {/* <Searchbar /> */}
-      {/* <Container /> */}
-      <h1>WEATHER APP</h1>
+      <h1>WEATHER APP CARDS</h1>
 
       <div className="collection-container">
         <Collections />

@@ -66,7 +66,7 @@ function Searchbar({collectionIndex}) {
     <form className='searchbar' onSubmit={handleSubmit}>
         <div className="search-autocomplete">
             <input type="text" name="" id="" placeholder='Search your city' onChange={getPredictions} ref={searchRef} onFocus={() => setSearchActive(true)} onBlur={() => setSearchActive(false)}/>
-            <div className={(dropDown.length >= 0 && searchActive) ? 'dropdown active' : 'dropdown'}>
+            <div className={(dropDown.length >= 0 && searchActive) ? 'dropdown active' : 'dropdown'} >
                 {
                     dropDown.length >= 1 && (
                         dropDown.map(menu => {
