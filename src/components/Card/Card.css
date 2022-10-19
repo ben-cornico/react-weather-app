@@ -59,6 +59,10 @@
     height: 85px;
 }
 
+.main-weather-desc::first-letter {
+    text-transform: uppercase;
+}
+
 .main-weather-desc {
     font-size: 0.95rem;
 }
