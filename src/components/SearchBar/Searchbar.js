@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setCollectionWeather, setCollectionPlace } from '../../Redux/collectionsSlice';
+import { setCollectionWeather, setCollectionPlace, selectCollection } from '../../Redux/collectionsSlice';
 import axios from 'axios'
 import './Search.css'
 
@@ -11,7 +11,8 @@ function Searchbar({collectionIndex}) {
     const [dropDown, setDropDown] = useState([])
     const [searchActive, setSearchActive] = useState(false);
     const [coordinates, setCoordinates] = useState({});
-    const [weatherPlace, setWeatherPlace] = useState("")
+    const [weatherPlace, setWeatherPlace] = useState("");
+    const [selected, setSelected] = useState(0)
 
     const getPredictions = (e) => {
         const val = e.target.value
@@ -33,8 +34,11 @@ function Searchbar({collectionIndex}) {
 
     const handleSubmit = (e, item) => {
         e.preventDefault();
+        e.target.blur();
+        setSelected(0)
         setWeatherPlace(item.description);
         dispatch(setCollectionPlace({place: item.description, collectionIndex}))
+        searchRef.current.value = item.description
 
         const config = {
             method: 'get',
@@ -50,10 +54,28 @@ function Searchbar({collectionIndex}) {
             .catch(err => {
                 console.log(err.response)
             })
-
-        
-        
     }
+
+    const handleKeyPress = (e) => {
+        console.log(e.keyCode)
+        if(e.keyCode === 40) {
+            if(selected < dropDown.length) {
+                setSelected(selected + 1);
+            } else {
+                setSelected(0)
+            }
+        } else if(e.keyCode === 38) {
+            if(selected > 0) {
+                setSelected(selected-1);
+            } else {
+                setSelected(dropDown.length)
+            }
+        } else if(e.keyCode === 13 ) {
+            console.log(searchRef)
+            handleSubmit(e, dropDown[selected-1]);
+        }
+    }
+    
 
     useEffect(() => {
         dispatch(setCollectionWeather({coordinates, collectionIndex}));
@@ -65,12 +87,21 @@ function Searchbar({collectionIndex}) {
     <>
     <form className='searchbar' onSubmit={handleSubmit}>
         <div className="search-autocomplete">
-            <input type="text" name="" id="" placeholder='Search your city' onChange={getPredictions} ref={searchRef} onFocus={() => setSearchActive(true)} onBlur={() => setSearchActive(false)}/>
-            <div className={(dropDown.length >= 0 && searchActive) ? 'dropdown active' : 'dropdown'} >
+            <input type="text"
+                name=""
+                id=""
+                placeholder='Search your city'
+                onChange={getPredictions}
+                ref={searchRef}
+                onFocus={() => setSearchActive(true)}
+                onBlur={() => setSearchActive(false)}
+                onKeyDown={handleKeyPress}
+            />
+            <div className={(dropDown.length >= 0 && searchActive) ? 'dropdown active' : 'dropdown'}>
                 {
                     dropDown.length >= 1 && (
-                        dropDown.map(menu => {
-                            return <div className="item" key={menu.place_id} onClick={(e) => handleSubmit(e, menu)}>{menu.description}</div>
+                        dropDown.map((menu, index) => {
+                            return <div className={selected === index+1 ? "item" : "item selected"} key={menu.place_id} onClick={(e) => handleSubmit(e, menu)}>{menu.description}</div>
                         })
                     )
                 }

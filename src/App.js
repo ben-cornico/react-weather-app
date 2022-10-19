@@ -8,7 +8,7 @@ function App() {
   const test = ["TESTING", "TESTING"]
   return (
     <div className="App">
-      <h1>WEATHER APP CARDS</h1>
+      <div className='app-title'>WEATHER APP CARDS</div>
 
       <div className="collection-container">
         <Collections />

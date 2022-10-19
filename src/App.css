@@ -8,8 +8,19 @@
   height: 100vh;
   display: flex;
   flex-direction: column;
-  align-items: center;
+}
 
+.App > .app-title {
+  display: flex;
+  height: 100%;
+  justify-content: center;
+  align-items: center;
+  font-size: 2.5rem;
+  font-weight: 700;
+}
+
+.collection-container {
+  height: 100%;
 }
 
 .collection-container {

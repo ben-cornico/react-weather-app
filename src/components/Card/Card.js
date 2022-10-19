@@ -67,7 +67,7 @@ const Card = ({data, collectionIndex}) => {
                         </p>
                     </div>
                     <div className='date-time'>
-                        <p>{weekday}y</p>
+                        <p>{weekday}</p>
                         <p>{date}</p>
                         <p>{time}</p>
                     </div>
