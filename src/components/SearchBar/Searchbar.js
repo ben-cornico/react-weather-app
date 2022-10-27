@@ -15,13 +15,14 @@ function Searchbar({collectionIndex}) {
     const [selected, setSelected] = useState(0)
 
     const getPredictions = (e) => {
-        console.log(searchRef.current.value.length)
         const val = e.target.value
             const config = {
                 method: 'get',
                 //made a proxy base url in package.json to fix the CORS error if youre using third party api
-                url: `autocomplete/json?input=${val}&types=locality&key=${process.env.REACT_APP_GOOGLE_API_KEY}`,
-                headers: {  }
+                url: `/autocomplete/json?input=${val}&types=locality&key=${process.env.REACT_APP_GOOGLE_API_KEY}`,
+                headers: {  'Access-Control-Allow-Origin': '*',
+                'Access-Control-Allow-Credentials':true,
+                'Access-Control-Allow-Methods':'POST, GET' }
             }
 
             axios(config)
