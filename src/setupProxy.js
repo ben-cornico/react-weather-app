@@ -5,7 +5,7 @@ module.exports = function(app) {
   app.use(
     '/api',
     createProxyMiddleware({
-      target: 'http://localhost:3080',
+      target: 'https://maps.googleapis.com/maps/api/place',
       changeOrigin: true,
     })
   );
