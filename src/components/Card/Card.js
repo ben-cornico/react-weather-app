@@ -10,7 +10,9 @@ import Searchbar from '../SearchBar/Searchbar';
 import { useDispatch } from 'react-redux';
 import { deleteCollection, } from '../../Redux/collectionsSlice';
 
-const Card = ({data, collectionIndex}) => {
+const Card = (props) => {
+    const {data, collectionIndex} = props;
+    console.log(props)
     const dispatch = useDispatch()
 
     const [temp, setTemp] = useState({})

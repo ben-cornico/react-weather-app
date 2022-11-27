@@ -92,10 +92,10 @@
 //     }
     
 
-//     useEffect(() => {
-//         dispatch(setCollectionWeather({coordinates, collectionIndex}));
+    // useEffect(() => {
+    //     dispatch(setCollectionWeather({coordinates, collectionIndex}));
 
-//     }, [coordinates, weatherPlace]);
+    // }, [coordinates, weatherPlace]);
     
 
 //   return (
@@ -136,43 +136,39 @@
 
 // export default Searchbar
 
-import React from 'react'
+import React, { useState, useEffect } from 'react'
 import AutoComplete from 'react-google-autocomplete'
-const Searchbar = () => {
+import { useDispatch } from 'react-redux';
+import { setCollectionWeather, setCollectionPlace, selectCollection } from '../../Redux/collectionsSlice';
 
-    // const [coordinates, setCoordinates] = useState({});
+const Searchbar = ({collectionIndex}) => {
+
+    const dispatch = useDispatch()
+
+    const [coordinates, setCoordinates] = useState({});
+    const [address, setAddress] = useState("")
     // const [selected, setSelected] = useState(0)
 
+    
+    useEffect(() => {
+        console.log(address)
+        dispatch(setCollectionWeather({coordinates, address, collectionIndex}));
+
+    }, [coordinates, address]);
+
     const handleSubmit = (place) => {
-        // dispatch(setCollectionPlace({place: item.description, collectionIndex}));
-
-        
-        // const config = {
-        //     method: 'get',
-        //     //made a proxy base url in package.json to fix the CORS error if youre using third party api
-        //     url: `details/json?place_id=${item.place_id}&key=${process.env.REACT_APP_GOOGLE_API_KEY}`,
-        //     headers: {  }
-        // }
-
-
-        // axios(config)
-        //     .then(res => {
-        //         setCoordinates(res.data.result.geometry.location);
-        //     })
-        //     .catch(err => {
-        //         console.log(err.response)
-        //     })
-
-        // console.log(place.geometry.location.lat)
-        console.log(place.geometry.location.lat())
-        place.geometry.location.lat(e => {
-            console.log(e)
-        })
+        dispatch(setCollectionPlace({place: place.formatted_address, collectionIndex}));
+        console.log(place)
+        const coordinates = {
+            lat: place.geometry.location.lat(),
+            lng: place.geometry.location.lng()
+        }
+        setCoordinates(coordinates)
     }
 
   return (
     <AutoComplete
-        style={{padding: "0.75rem", fontSize: "0.9rem"}}
+        style={{padding: "0.35rem", fontSize: "0.9rem"}}
         apiKey={process.env.REACT_APP_GOOGLE_API_KEY}
         onPlaceSelected={(place) => handleSubmit(place)}
     />
